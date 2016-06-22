@@ -147,7 +147,7 @@ public class ShotTracker extends Activity implements AdListener {
             }
         });
         int delay = 1000; // delay for 1 sec.
-        int period = 10000; // repeat every 4 sec.
+        int period = getResources().getInteger(R.integer.refresh_rate);
         Timer timer = new Timer();
         final Context context= this;
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -198,7 +198,7 @@ public class ShotTracker extends Activity implements AdListener {
         shotAdapter.notifyDataSetChanged();
     }
     private void setUpAds(){
-        AdRegistration.setAppKey("15aa1494c2d14f298d7a257f4809cdce");
+        AdRegistration.setAppKey(getString(R.string.amazon_id));
         amazonAdView = new com.amazon.device.ads.AdLayout(this, com.amazon.device.ads.AdSize.SIZE_320x50);
         amazonAdView.setListener(this);
         //AdRegistration.enableTesting(true);
