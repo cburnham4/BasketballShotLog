@@ -1,13 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.carl.basketballshotlog2.Spot_ListView"
+    tools:context=".SpotActivity"
     android:background="@color/white">
+
+    <include layout="@layout/toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:orientation="horizontal"
+        android:layout_below="@+id/toolbar"
         android:id="@+id/lin_input_shot">
 
         <EditText
@@ -37,25 +40,15 @@
         android:background="@color/light_blue"
         android:layout_below="@+id/lin_input_shot"
         android:id="@+id/lin_blue_line"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal"/>
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lin_blue_line"
-        android:layout_above="@+id/al_spots"
-        android:id="@+id/lv_shot_location"></ListView>
+        android:layout_above="@+id/ad_layout"
+        android:id="@+id/lv_shot_location"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:id="@+id/al_spots"
-        android:background="@color/primary">
-
-    </LinearLayout>
-
+    <include layout="@layout/ad_layout"/>
 
 </RelativeLayout>

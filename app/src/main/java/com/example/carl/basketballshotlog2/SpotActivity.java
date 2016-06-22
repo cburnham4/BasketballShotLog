@@ -1,7 +1,6 @@
 package com.example.carl.basketballshotlog2;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -21,21 +21,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amazon.device.ads.Ad;
-import com.amazon.device.ads.AdError;
-import com.amazon.device.ads.AdListener;
-import com.amazon.device.ads.AdProperties;
-import com.amazon.device.ads.AdRegistration;
-
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Helpers.AdsHelper;
 import ListViewHelpers.Spot;
 import ListViewHelpers.SpotAdapter;
 
 
-public class Spot_ListView extends AppCompatActivity implements AdListener {
+public class SpotActivity extends AppCompatActivity{
     private ArrayList<Spot> list_spots;
     private SpotAdapter spotsAdapter;
     ShotDBHelper dbHelper;
@@ -50,15 +45,20 @@ public class Spot_ListView extends AppCompatActivity implements AdListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_list_view);
+        setContentView(R.layout.activity_spots);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Shot Locations");
+
         list_spots = new ArrayList<Spot>();
         dbHelper = new ShotDBHelper(getBaseContext());
         final SQLiteDatabase write_db = dbHelper.getWritableDatabase();
-        //this.getActionBar().setTitle("Shot spotsss");
+
         this.setTitle("Shot Locations");
         this.listView = (ListView) findViewById(R.id.lv_shot_location);
         this.setUpListView();
-        this.setUpAds();
+
         final TextView et_input_spot = (TextView) findViewById(R.id.et_input_spot);
         Button btn_addSpot = (Button) findViewById(R.id.btn_add_Spot);
         btn_addSpot.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,7 @@ public class Spot_ListView extends AppCompatActivity implements AdListener {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Intent intent = new Intent(Spot_ListView.this, TabShotActivity.class);
+                Intent intent = new Intent(SpotActivity.this, TabShotActivity.class);
                 Spot spot = spotsAdapter.getItem(position);
                 intent.putExtra("spid", spot.getSpid());
                 intent.putExtra("spot", spot.getSpot());
@@ -87,18 +87,7 @@ public class Spot_ListView extends AppCompatActivity implements AdListener {
             }
         });
 
-        int delay = 1000; // delay for 1 sec.
-        int period = getResources().getInteger(R.integer.refresh_rate); // repeat every 10 sec.
-        Timer timer = new Timer();
-        final Context context= this;
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                refreshAd();
-            }
-        }, delay, period);
-
-
-
+        this.runAds();
     }
 
     private int getLastSpid(){
@@ -208,81 +197,20 @@ public class Spot_ListView extends AppCompatActivity implements AdListener {
         db.update("Spots", newValues, "spid= "+spot.getSpid(),null);
 
     }
-    private void setUpAds(){
-        AdRegistration.setAppKey(getString(R.string.amazon_id));
-        amazonAdView = new com.amazon.device.ads.AdLayout(this, com.amazon.device.ads.AdSize.SIZE_320x50);
-        amazonAdView.setListener(this);
-        //AdRegistration.enableTesting(true);
-        admobAdView = new com.google.android.gms.ads.AdView(this);
-        admobAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
-        admobAdView.setAdUnitId(getString(R.string.banner_ad));
 
-        // Initialize view container
-        adViewContainer = (ViewGroup)findViewById(R.id.al_spots);
-        amazonAdEnabled = true;
-        adViewContainer.addView(amazonAdView);
+    private AdsHelper adsHelper;
 
-        amazonAdView.loadAd(new com.amazon.device.ads.AdTargetingOptions());
-    }
+    private void runAds(){
+        adsHelper =  new AdsHelper(getWindow().getDecorView(), getResources().getString(R.string.banner_ad), this);
 
-
-    public void refreshAd()
-    {
-        amazonAdView.loadAd(new com.amazon.device.ads.AdTargetingOptions());
-    }
-
-    @Override
-    public void onAdLoaded(Ad ad, AdProperties adProperties) {
-        if (!amazonAdEnabled)
-        {
-            amazonAdEnabled = true;
-            adViewContainer.removeView(admobAdView);
-            adViewContainer.addView(amazonAdView);
-        }
-    }
-
-    @Override
-    public void onAdFailedToLoad(Ad ad, AdError adError) {
-        // Call AdMob SDK for backfill
-        if (amazonAdEnabled)
-        {
-            amazonAdEnabled = false;
-            adViewContainer.removeView(amazonAdView);
-            adViewContainer.addView(admobAdView);
-        }
-//        AdRequest.Builder.addTestDevice("04CD51A7A1F806B7F55CADD6A3B84E92");
-        admobAdView.loadAd((new com.google.android.gms.ads.AdRequest.Builder()).build());
-    }
-
-    @Override
-    public void onAdExpanded(Ad ad) {
-
-    }
-
-    @Override
-    public void onAdCollapsed(Ad ad) {
-
-    }
-
-    @Override
-    public void onAdDismissed(Ad ad) {
-
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        this.amazonAdView.destroy();
-    }
-
-    public void onPause(){
-        super.onPause();
-        this.amazonAdView.destroy();
-    }
-
-    public void onResume(){
-        super.onResume();
-        this.setUpAds();
+        adsHelper.setUpAds();
+        int delay = 1000; // delay for 1 sec.
+        int period = getResources().getInteger(R.integer.refresh_rate);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                adsHelper.refreshAd();  // display the data
+            }
+        }, delay, period);
     }
 }

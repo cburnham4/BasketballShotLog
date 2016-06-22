@@ -4,7 +4,10 @@
     tools:context="com.example.carl.basketballshotlog2.TabShotActivity"
     android:background="@color/white">
 
+    <include layout="@layout/toolbar"/>
+
     <TabHost
+        android:layout_below="@+id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/tabHost">

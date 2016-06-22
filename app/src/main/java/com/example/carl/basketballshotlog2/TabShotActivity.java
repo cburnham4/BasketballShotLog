@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TabHost;
@@ -20,11 +21,13 @@ public class TabShotActivity extends AppCompatActivity {
         Intent recievedIntent = getIntent();
         int spid = recievedIntent.getIntExtra("spid", 0);
         String spot = recievedIntent.getStringExtra("spot");
-        Log.i("SPID in shot ", spid + "");
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(spot);
-        //actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
 
         TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
         LocalActivityManager mLocalActivityManager = new LocalActivityManager(this, false);
@@ -32,7 +35,7 @@ public class TabShotActivity extends AppCompatActivity {
         tabHost.setup(mLocalActivityManager);
 
         TabHost.TabSpec spec1 =tabHost.newTabSpec("tab1");
-        Intent intent1 = new Intent(this, ShotTracker.class);
+        Intent intent1 = new Intent(this, InputShotsActivity.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent1.putExtra("spid", spid);
         spec1.setContent(intent1);//

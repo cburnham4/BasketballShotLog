@@ -2,44 +2,32 @@ package com.example.carl.basketballshotlog2;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.amazon.device.ads.Ad;
-import com.amazon.device.ads.AdError;
-import com.amazon.device.ads.AdListener;
-import com.amazon.device.ads.AdProperties;
-import com.amazon.device.ads.AdRegistration;
-
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Helpers.AdsHelper;
 import ListViewHelpers.Shot;
 import ListViewHelpers.ShotAdapter;
-import ListViewHelpers.SpotAdapter;
 
 
-public class ShotTracker extends Activity implements AdListener {
+public class InputShotsActivity extends Activity  {
 
     private ShotDBHelper dbHelper;
     private ArrayList<Shot> list_shots;
@@ -59,8 +47,7 @@ public class ShotTracker extends Activity implements AdListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shot_tracker);
-        this.setUpAds();
+        setContentView(R.layout.activity_input_shot);
 
         dbHelper = new ShotDBHelper(getBaseContext());
         this.db = dbHelper.getReadableDatabase();
@@ -146,15 +133,8 @@ public class ShotTracker extends Activity implements AdListener {
 
             }
         });
-        int delay = 1000; // delay for 1 sec.
-        int period = getResources().getInteger(R.integer.refresh_rate);
-        Timer timer = new Timer();
-        final Context context= this;
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                refreshAd();
-            }
-        }, delay, period);
+
+        this.runAds();
 
 
     }
@@ -197,82 +177,20 @@ public class ShotTracker extends Activity implements AdListener {
         shotAdapter.remove(shot);
         shotAdapter.notifyDataSetChanged();
     }
-    private void setUpAds(){
-        AdRegistration.setAppKey(getString(R.string.amazon_id));
-        amazonAdView = new com.amazon.device.ads.AdLayout(this, com.amazon.device.ads.AdSize.SIZE_320x50);
-        amazonAdView.setListener(this);
-        //AdRegistration.enableTesting(true);
-        admobAdView = new com.google.android.gms.ads.AdView(this);
-        admobAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
-        admobAdView.setAdUnitId(getString(R.string.banner_ad));
+    private AdsHelper adsHelper;
 
-        // Initialize view container
-        adViewContainer = (ViewGroup)findViewById(R.id.al_shots);
-        amazonAdEnabled = true;
-        adViewContainer.addView(amazonAdView);
+    private void runAds(){
+        adsHelper =  new AdsHelper(getWindow().getDecorView(), getResources().getString(R.string.banner_ad), this);
 
-        amazonAdView.loadAd(new com.amazon.device.ads.AdTargetingOptions());
-    }
-
-
-    public void refreshAd()
-    {
-        amazonAdView.loadAd(new com.amazon.device.ads.AdTargetingOptions());
-    }
-
-    @Override
-    public void onAdLoaded(Ad ad, AdProperties adProperties) {
-        if (!amazonAdEnabled)
-        {
-            amazonAdEnabled = true;
-            adViewContainer.removeView(admobAdView);
-            adViewContainer.addView(amazonAdView);
-        }
-    }
-
-    @Override
-    public void onAdFailedToLoad(Ad ad, AdError adError) {
-        // Call AdMob SDK for backfill
-        if (amazonAdEnabled)
-        {
-            amazonAdEnabled = false;
-            adViewContainer.removeView(amazonAdView);
-            adViewContainer.addView(admobAdView);
-        }
-//        AdRequest.Builder.addTestDevice("04CD51A7A1F806B7F55CADD6A3B84E92");
-        admobAdView.loadAd((new com.google.android.gms.ads.AdRequest.Builder()).build());
-    }
-
-    @Override
-    public void onAdExpanded(Ad ad) {
-
-    }
-
-    @Override
-    public void onAdCollapsed(Ad ad) {
-
-    }
-
-    @Override
-    public void onAdDismissed(Ad ad) {
-
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        this.amazonAdView.destroy();
-    }
-
-    public void onPause(){
-        super.onPause();
-        this.amazonAdView.destroy();
-    }
-
-    public void onResume(){
-        super.onResume();
-        this.setUpAds();
+        adsHelper.setUpAds();
+        int delay = 1000; // delay for 1 sec.
+        int period = getResources().getInteger(R.integer.refresh_rate);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                adsHelper.refreshAd();  // display the data
+            }
+        }, delay, period);
     }
 
 }

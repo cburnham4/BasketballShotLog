@@ -38,11 +38,7 @@ import Helpers.DateConverter;
 
 public class GraphActivity extends AppCompatActivity {
     SQLiteDatabase db;
-    private ViewGroup adViewContainer;
-    private com.amazon.device.ads.AdLayout amazonAdView;
-    private com.google.android.gms.ads.AdView admobAdView;
-    private boolean amazonAdEnabled;
-    private ShotDBHelper dbHelper;
+
     ArrayList<Date> dates;
     private int spid;
     @Override

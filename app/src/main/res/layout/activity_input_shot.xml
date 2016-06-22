@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.carl.basketballshotlog2.ShotTracker">
+    tools:context=".InputShotsActivity">
 
     <ListView
         android:layout_width="wrap_content"
@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/al_shots"
+        android:layout_above="@+id/ad_layout"
         android:background="@color/white">
 
        <LinearLayout
@@ -173,18 +173,8 @@
             android:text="+"
             />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:id="@+id/al_shots"
-        android:background="@color/primary">
 
-    </LinearLayout>
-
+    <include layout="@layout/ad_layout"/>
 
 
 </RelativeLayout>
