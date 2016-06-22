@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.carl.basketballshotlog2" >
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/basketball_icon_114"
+        android:label="@string/app_name"
+        android:theme="@style/CustomActionBarTheme" >
+        <activity
+            android:name=".Spot_ListView"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TabShotActivity"
+            android:label="@string/title_activity_tab">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Spot_ListView" />
+
+        </activity>
+        <activity
+            android:name=".ShotTracker"
+            android:label="@string/title_activity_shot_tracker"
+            android:windowSoftInputMode="stateUnchanged">
+        </activity>
+        <activity
+            android:name=".GraphProgress"
+            android:label="@string/title_activity_graph_progress" >
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.amazon.device.ads.AdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+    </application>
+
+</manifest>

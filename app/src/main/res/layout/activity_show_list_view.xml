@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.carl.basketballshotlog2.Spot_ListView"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:id="@+id/lin_input_shot">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/et_input_spot"
+            android:hint="Ex. Freethrow"
+            android:layout_weight="6"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:id="@+id/btn_add_Spot"
+            android:background="@drawable/btn_addspot"
+            android:text="+"
+/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_blue"
+        android:layout_below="@+id/lin_input_shot"
+        android:id="@+id/lin_blue_line"
+        android:orientation="horizontal"></LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lin_blue_line"
+        android:layout_above="@+id/al_spots"
+        android:id="@+id/lv_shot_location"></ListView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:id="@+id/al_spots"
+        android:background="@color/primary">
+
+    </LinearLayout>
+
+
+</RelativeLayout>

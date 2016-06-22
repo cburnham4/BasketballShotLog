@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgBasketball"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:src="@drawable/basketball_50"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_spot_name"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="5"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_forward_arrow"
+            android:layout_weight="1"
+            android:padding="11dp"
+             />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

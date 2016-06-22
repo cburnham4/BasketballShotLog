@@ -1,0 +1,190 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.carl.basketballshotlog2.ShotTracker">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_shots">
+
+    </ListView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/al_shots"
+        android:background="@color/white">
+
+       <LinearLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+
+           android:layout_weight="6"
+           android:id="@+id/lin_bottom"
+           >
+
+           <LinearLayout
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Made"
+                   android:layout_marginLeft="3dp"
+                   android:textColor="@color/black"
+                   android:textSize="16dp"/>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/light_blue"
+                   android:orientation="horizontal"></LinearLayout>
+
+
+               <LinearLayout
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <Button
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="-1"
+                       android:layout_weight="1"
+                       android:layout_margin="3dp"
+                       android:textSize="20dp"
+                       android:id="@+id/btn_sub1_made"
+                       android:textColor="@color/white"
+                       android:background="@drawable/btn_add_sub"
+                       />
+
+                   <EditText
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="0"
+                       android:layout_weight="1"
+                       android:id="@+id/ed_made"
+                       android:inputType="number"
+                       android:layout_gravity="center_horizontal"
+                       android:gravity="center_horizontal"
+                       />
+
+                   <Button
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="+1"
+                       android:layout_weight="1"
+                       android:id="@+id/btn_add1_made"
+                       android:textSize="20dp"
+                       android:layout_margin="3dp"
+                       android:textColor="@color/white"
+                       android:background="@drawable/btn_add_sub"/>
+
+               </LinearLayout>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="1dp"
+               android:layout_height="fill_parent"
+               android:background="@color/light_blue"
+               android:orientation="horizontal"></LinearLayout>
+
+           <LinearLayout
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Attempts"
+                   android:layout_marginLeft="3dp"
+                   android:textColor="@color/black"
+                   android:textSize="16dp"/>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/light_blue"
+                   android:orientation="horizontal"></LinearLayout>
+
+
+               <LinearLayout
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <Button
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="-1"
+                       android:layout_weight="1"
+                       android:layout_margin="3dp"
+                       android:textSize="20dp"
+                       android:id="@+id/btn_sub1_attempts"
+                       android:textColor="@color/white"
+                       android:background="@drawable/btn_add_sub"
+                       />
+
+                   <EditText
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="0"
+                       android:layout_weight="1"
+                       android:id="@+id/ed_attempts"
+                       android:inputType="number"
+                       android:layout_gravity="center_horizontal"
+                       android:gravity="center_horizontal"
+                       />
+
+                   <Button
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:text="+1"
+                       android:layout_weight="1"
+                       android:id="@+id/btn_add1_attempt"
+                       android:textSize="20dp"
+                       android:layout_margin="3dp"
+                       android:textColor="@color/white"
+                       android:background="@drawable/btn_add_sub"/>
+
+               </LinearLayout>
+
+           </LinearLayout>
+
+       </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="30dp"
+
+            android:textColor="@color/white"
+            android:id="@+id/btn_add_shot"
+
+            android:background="@drawable/btn_addspot"
+            android:text="+"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:id="@+id/al_shots"
+        android:background="@color/primary">
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
