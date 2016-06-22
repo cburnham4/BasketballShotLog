@@ -32,7 +32,7 @@
             android:windowSoftInputMode="stateUnchanged">
         </activity>
         <activity
-            android:name=".GraphProgress"
+            android:name=".GraphActivity"
             android:label="@string/title_activity_graph_progress" >
         </activity>
         <meta-data

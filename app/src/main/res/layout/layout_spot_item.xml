@@ -24,6 +24,7 @@
             android:textSize="18sp"
             android:layout_gravity="center_vertical"
             android:layout_weight="5"
+            android:textColor="@color/black"
             />
 
         <ImageView

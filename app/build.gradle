@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.jjoe64:graphview:4.0.1'
     compile 'com.google.android.gms:play-services-ads:9.0.2'
-    compile files('libs/amazon-ads-5.4.235.jar')
+    compile 'com.amazon.android:mobile-ads:5.7.2'
 }

@@ -3,11 +3,9 @@ package com.example.carl.basketballshotlog2;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 
@@ -43,7 +41,7 @@ public class TabShotActivity extends AppCompatActivity {
         tabHost.addTab(spec1);
 
         TabHost.TabSpec spec2 =tabHost.newTabSpec("tab2");
-        Intent intent2 = new Intent(this, GraphProgress.class);
+        Intent intent2 = new Intent(this, GraphActivity.class);
         intent2.putExtra("spid", spid);
         intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         spec2.setIndicator("Graph");
