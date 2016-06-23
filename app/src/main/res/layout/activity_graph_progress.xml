@@ -1,13 +1,92 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GraphActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- Chart to view attendence -->
 
-    <com.jjoe64.graphview.GraphView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/graph"/>
+        android:layout_height="match_parent"
+        android:id="@+id/rel_graph">
 
-<include layout="@layout/ad_layout"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lin_dateSelection"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin_between_dates"
+                android:textSize="@dimen/graph_dateSelection_textsz"
+                android:id="@+id/tv_1m"
+                android:text="1m"
 
+                android:clickable="true"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin_between_dates"
+                android:textSize="@dimen/graph_dateSelection_textsz"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:id="@+id/tv_3m"
+                android:text="3m"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin_between_dates"
+                android:textSize="@dimen/graph_dateSelection_textsz"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:id="@+id/tv_6m"
+                android:text="6m"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin_between_dates"
+                android:textSize="@dimen/graph_dateSelection_textsz"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:id="@+id/tv_1y"
+                android:text="1y"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin_between_dates"
+                android:textSize="@dimen/graph_dateSelection_textsz"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:background="@color/divider"
+                android:id="@+id/tv_all"
+                android:text="All"/>
+        </LinearLayout>
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/margin_top_graph"
+            android:layout_height="300dp"
+            android:id="@+id/graph"
+            android:layout_below="@id/lin_dateSelection"
+            />
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_data_available"
+        android:visibility="gone"
+        android:id="@+id/tv_noData"/>
+
+    <include layout="@layout/ad_layout"/>
 </RelativeLayout>
