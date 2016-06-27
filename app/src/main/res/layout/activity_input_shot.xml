@@ -6,7 +6,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lv_shots">
+        android:id="@+id/lv_shots"
+        android:layout_above="@+id/linAddShot"
+        android:layout_alignParentTop="true">
 
     </ListView>
 
@@ -15,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ad_layout"
+        android:id="@+id/linAddShot"
         android:background="@color/white">
 
        <LinearLayout
