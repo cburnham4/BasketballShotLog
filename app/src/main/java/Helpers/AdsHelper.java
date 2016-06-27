@@ -45,7 +45,7 @@ public class AdsHelper implements AdListener {
         AdRegistration.setAppKey(amazon_id);
         amazonAdView = new com.amazon.device.ads.AdLayout(activity, com.amazon.device.ads.AdSize.SIZE_320x50);
         amazonAdView.setListener(this);
-        AdRegistration.enableTesting(true);
+        //AdRegistration.enableTesting(true);
 
         admobAdView = new com.google.android.gms.ads.AdView(activity);
         admobAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
@@ -62,7 +62,6 @@ public class AdsHelper implements AdListener {
 
     public void refreshAd()
     {
-        Log.e("REFRESH", "refreshing ad now");
         amazonAdView.loadAd(new com.amazon.device.ads.AdTargetingOptions());
     }
 
