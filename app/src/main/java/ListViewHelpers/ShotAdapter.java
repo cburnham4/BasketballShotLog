@@ -46,7 +46,7 @@ public class ShotAdapter extends ArrayAdapter<Shot> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-            viewHolder.tv_made_miss.setText("Made "+shot.getMade() + " Of "+ shot.getAttempted());
+            viewHolder.tv_made_miss.setText("Made "+shot.getMade() + " of "+ shot.getAttempted());
             viewHolder.tv_percent.setText(" => "+shot.getPercent()+"%");
             viewHolder.tv_date.setText(dateConverter.convertDateToText(shot.getDate()));
 
