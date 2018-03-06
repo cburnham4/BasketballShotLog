@@ -19,13 +19,12 @@ import Helpers.DateConverter;
  * Created by Carl on 6/25/2015.
  */
 public class ShotAdapter extends ArrayAdapter<Shot> {
-    Context context;
-    ArrayList<Shot> shots;
-    DateConverter dateConverter;
-    public ShotAdapter(Context context, ArrayList<Shot> shots){
-        super(context,0,shots);
-        this.shots =shots;
-        this.context = context;
+    private ArrayList<Shot> shots;
+    private DateConverter dateConverter;
+
+    public ShotAdapter(Context context, ArrayList<Shot> shots) {
+        super(context, 0, shots);
+        this.shots = shots;
         this.dateConverter = new DateConverter();
     }
 
@@ -46,16 +45,15 @@ public class ShotAdapter extends ArrayAdapter<Shot> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-            viewHolder.tv_made_miss.setText("Made "+shot.getMade() + " of "+ shot.getAttempted());
-            viewHolder.tv_percent.setText(" => "+shot.getPercent()+"%");
-            viewHolder.tv_date.setText(dateConverter.convertDateToText(shot.getDate()));
+        viewHolder.tv_made_miss.setText("Made " + shot.getMade() + " of " + shot.getAttempted());
+        viewHolder.tv_percent.setText(" => " + shot.getPercent() + "%");
+        viewHolder.tv_date.setText(dateConverter.convertDateToText(shot.getDate()));
 
         // Return the completed view to render on screen
         return convertView;
     }
 
-    static class ViewHolder
-    {
+    static class ViewHolder {
         TextView tv_made_miss;
         TextView tv_percent;
         TextView tv_date;
