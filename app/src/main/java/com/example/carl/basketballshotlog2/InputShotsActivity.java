@@ -65,7 +65,7 @@ public class InputShotsActivity extends Activity  {
         final Button addShot = (Button) findViewById(R.id.btn_add_shot);
 
         final EditText ed_made = (EditText) findViewById(R.id.ed_made);
-        final EditText ed_attempt =(EditText) findViewById(R.id.ed_attempts);
+        final EditText et_missed =(EditText) findViewById(R.id.et_missed);
 
         btn_add_made.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -90,8 +90,8 @@ public class InputShotsActivity extends Activity  {
         btn_add_attempt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    int rep = Integer.parseInt(ed_attempt.getText().toString());
-                    ed_attempt.setText(rep + 1 + "");
+                    int rep = Integer.parseInt(et_missed.getText().toString());
+                    et_missed.setText(rep + 1 + "");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -99,8 +99,8 @@ public class InputShotsActivity extends Activity  {
         });
         btn_sub_attempt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int weight = Integer.parseInt(ed_attempt.getText().toString());
-                ed_attempt.setText(weight - 1 + "");
+                int weight = Integer.parseInt(et_missed.getText().toString());
+                et_missed.setText(weight - 1 + "");
             }
         });
 
@@ -108,9 +108,10 @@ public class InputShotsActivity extends Activity  {
         addShot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    if (ed_made.getText().toString() != "" && ed_attempt.getText().toString() != "") {
-                        int attempts = Integer.parseInt(ed_attempt.getText().toString());
+                    if (ed_made.getText().toString() != "" && et_missed.getText().toString() != "") {
+                        int misses = Integer.parseInt(et_missed.getText().toString());
                         int made = Integer.parseInt(ed_made.getText().toString());
+                        int attempts = made + misses;
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         Date date = new Date();
                         //PUT SET INTO SETS
@@ -122,7 +123,7 @@ public class InputShotsActivity extends Activity  {
                         values.put("spid", spid);
                         db.insert("Shots", null, values);
                         //-----------------------
-                        list_shots.add(new Shot(made, attempts, d, spid));
+                        list_shots.add(new Shot(made, misses, d, spid));
                         shotAdapter.notifyDataSetChanged();
                     }
                 }
@@ -147,7 +148,10 @@ public class InputShotsActivity extends Activity  {
         c.moveToFirst();
         while (c.isAfterLast() == false) {
             Log.i("SETSANDREPS", "Weight: " + c.getString(0) + " Reps: " + c.getString(1) + " sets: " + c.getInt(2));
-            Shot shot = new Shot(c.getInt(1),c.getInt(2), c.getString(3),c.getInt(0));
+            int made = c.getInt(1);
+            int attempts = c.getInt(2);
+            int misses = attempts - made;
+            Shot shot = new Shot(made, misses, c.getString(3),c.getInt(0));
             list_shots.add(shot);
             c.moveToNext();
         }

@@ -6,9 +6,9 @@ import java.text.DecimalFormat;
  * Created by Carl on 6/25/2015.
  */
 public class Shot {
-    public Shot(int made, int attempted, String date, int sid) {
+    public Shot(int made, int missed, String date, int sid) {
         this.made = made;
-        this.attempted = attempted;
+        this.attempted = missed + made;
         double p = ((made+0.0)/attempted)*100;
         DecimalFormat df = new DecimalFormat("#.00");
         this.percent = df.format(p);
@@ -18,9 +18,14 @@ public class Shot {
 
     private int sid;
     private int made;
+    private int missed;
     private int attempted;
     private String percent;
     private String date;
+
+    public int getMissed() {
+        return missed;
+    }
 
     public int getMade() {
         return made;
