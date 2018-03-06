@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shot Tracker</string>
+
+    <string name="title_activity_tab">Shot Activity</string>
+    <string name="title_activity_shot_tracker">Shot Tracker</string>
+    <string name="title_activity_graph_progress">Graph</string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="action_settings">Settings</string>
+</resources>

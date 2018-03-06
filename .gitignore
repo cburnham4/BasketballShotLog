@@ -5,5 +5,5 @@
 .DS_Store
 /build
 /captures
-/app/src/main/res/values/strings.xml
+/app/src/main/res/values/keys.xml
 /app/src/main/res/values/integers.xml
