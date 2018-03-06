@@ -180,11 +180,11 @@ public class InputShotsActivity extends Activity  {
     private AdsHelper adsHelper;
 
     private void runAds(){
-        adsHelper =  new AdsHelper(getWindow().getDecorView(), getResources().getString(R.string.banner_ad), this);
+        adsHelper =  new AdsHelper(getWindow().getDecorView(), getResources().getString(R.string.admob_ad_id), this);
 
         adsHelper.setUpAds();
         int delay = 1000; // delay for 1 sec.
-        int period = getResources().getInteger(R.integer.refresh_rate);
+        int period = getResources().getInteger(R.integer.ad_refresh_rate);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
