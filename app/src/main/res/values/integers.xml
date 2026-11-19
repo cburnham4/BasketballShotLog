@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Banner refresh interval in milliseconds (~75 seconds) -->
+    <integer name="ad_refresh_rate">75000</integer>
+</resources>

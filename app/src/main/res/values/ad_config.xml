@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    PRODUCTION AdMob configuration for Basketball Shot Tracker
+    Publisher / account: ca-app-pub-8223005482588566
+
+    Debug builds override these with Google official test IDs via
+    app/src/debug/res/values/ad_config.xml
+
+    TODOs before release upload:
+    - Replace admob_app_id with the real AdMob App ID from the AdMob console
+      (format: ca-app-pub-8223005482588566~XXXXXXXXXX). It was not present in
+      the repo (keys.xml was gitignored) and is not known for this app.
+    - Banner unit ID below is the historical release unit from the old keys.xml.
+-->
+<resources>
+    <!-- TODO: replace with real AdMob App ID from AdMob console -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-8223005482588566~TODO_REPLACE_APP_ID</string>
+
+    <!-- Release banner unit (was in gitignored keys.xml as admob_ad_id) -->
+    <string name="admob_ad_id" translatable="false">ca-app-pub-8223005482588566/3743863939</string>
+</resources>
