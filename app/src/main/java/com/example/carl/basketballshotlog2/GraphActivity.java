@@ -212,7 +212,7 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     private void runAds() {
-        adsHelper = new AdsHelper(getWindow().getDecorView(), getString(R.string.admob_ad_id), this);
+        adsHelper = new AdsHelper(getWindow().getDecorView(), getString(R.string.admob_banner_graph), this);
         adsHelper.setUpAds();
         int delay = 1000;
         int period = getResources().getInteger(R.integer.ad_refresh_rate);

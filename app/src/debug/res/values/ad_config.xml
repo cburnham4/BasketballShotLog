@@ -5,5 +5,8 @@
 -->
 <resources>
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_home" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_banner_shot_tracker" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_banner_graph" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="admob_ad_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

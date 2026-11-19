@@ -90,10 +90,15 @@ This app is **not** directed at children under 13 (COPPA) or under 16 (GDPR age 
 
 ---
 
+## AdMob IDs (from console CSV)
+
+- **AdMob app used:** Basketball Shot Tracker (`carl.basketballshotlog2`) — matches this repo’s `applicationId` (not Basketball Shot Log / `tracker.basketballshotlog`).
+- **App ID:** `ca-app-pub-8223005482588566~2267130736`
+- **Banner unit:** `Banner_ad_home` → `ca-app-pub-8223005482588566/3743863939` (home + reused on shot-input and graph; only unit for this app)
+
 ## Owner Follow-ups Before Republish
 
 1. Complete the **Data safety** form using this doc.
 2. Confirm **Ads** declaration and any **Advertising ID** declaration.
-3. Replace the TODO **AdMob App ID** in `app/src/main/res/values/ad_config.xml` with the real `ca-app-pub-8223005482588566~…` value from AdMob.
-4. Create `keystore.properties` (gitignored) for release signing; do not commit keystores or passwords.
-5. Remove or stop shipping the legacy `app/app-release.apk` from the repo when convenient (left untouched in this PR).
+3. Create `keystore.properties` (gitignored) for release signing; do not commit keystores or passwords.
+4. Remove or stop shipping the legacy `app/app-release.apk` from the repo when convenient (left untouched in this PR).

@@ -172,7 +172,7 @@ public class InputShotsActivity extends Activity {
     }
 
     private void runAds() {
-        adsHelper = new AdsHelper(getWindow().getDecorView(), getResources().getString(R.string.admob_ad_id), this);
+        adsHelper = new AdsHelper(getWindow().getDecorView(), getString(R.string.admob_banner_shot_tracker), this);
         adsHelper.setUpAds();
         int delay = 1000;
         int period = getResources().getInteger(R.integer.ad_refresh_rate);

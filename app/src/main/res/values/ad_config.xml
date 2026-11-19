@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     PRODUCTION AdMob configuration for Basketball Shot Tracker
-    Publisher / account: ca-app-pub-8223005482588566
+    AdMob app entry: "Basketball Shot Tracker" (carl.basketballshotlog2)
+    Publisher: ca-app-pub-8223005482588566
+    App ID: ca-app-pub-8223005482588566~2267130736
 
-    Debug builds override these with Google official test IDs via
+    Source: AdMob console export (CSV). Not "Basketball Shot Log"
+    (tracker.basketballshotlog) — that is a different package / AdMob app.
+
+    Banner mapping (only one unit exists for this app; other screens reuse it):
+    ========================================================================
+    Screen / slot              | AdMob unit name   | Resource
+    SpotActivity (home)        | Banner_ad_home    | admob_banner_home
+    InputShotsActivity         | (reuse home)      | admob_banner_shot_tracker
+    GraphActivity              | (reuse home)      | admob_banner_graph
+
+    Debug builds override these with Google test IDs via
     app/src/debug/res/values/ad_config.xml
-
-    TODOs before release upload:
-    - Replace admob_app_id with the real AdMob App ID from the AdMob console
-      (format: ca-app-pub-8223005482588566~XXXXXXXXXX). It was not present in
-      the repo (keys.xml was gitignored) and is not known for this app.
-    - Banner unit ID below is the historical release unit from the old keys.xml.
 -->
 <resources>
-    <!-- TODO: replace with real AdMob App ID from AdMob console -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-8223005482588566~TODO_REPLACE_APP_ID</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-8223005482588566~2267130736</string>
 
-    <!-- Release banner unit (was in gitignored keys.xml as admob_ad_id) -->
+    <!-- Banner_ad_home — only banner unit for this AdMob app -->
+    <string name="admob_banner_home" translatable="false">ca-app-pub-8223005482588566/3743863939</string>
+
+    <!-- No CSV unit named for shot-input / graph on this app; reuse Banner_ad_home -->
+    <string name="admob_banner_shot_tracker" translatable="false">ca-app-pub-8223005482588566/3743863939</string>
+    <string name="admob_banner_graph" translatable="false">ca-app-pub-8223005482588566/3743863939</string>
+
+    <!-- Alias kept for any remaining references; same as Banner_ad_home -->
     <string name="admob_ad_id" translatable="false">ca-app-pub-8223005482588566/3743863939</string>
 </resources>
