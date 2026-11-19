@@ -5,5 +5,13 @@
 .DS_Store
 /build
 /captures
+/app/build
 /app/src/main/res/values/keys.xml
-/app/src/main/res/values/integers.xml
+keystore.properties
+*.jks
+*.keystore
+.kotlin/
+local.properties
+*.apk
+*.ap_
+*.aab

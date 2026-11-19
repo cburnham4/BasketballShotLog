@@ -1,13 +1,19 @@
 package com.example.carl.basketballshotlog2;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.assertEquals;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * Placeholder instrumented test replacing the removed ApplicationTestCase.
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
-        super(Application.class);
+@RunWith(AndroidJUnit4.class)
+public class ApplicationTest {
+    @Test
+    public void applicationId_isUnchanged() {
+        assertEquals("carl.basketballshotlog2", BuildConfig.APPLICATION_ID);
     }
 }
